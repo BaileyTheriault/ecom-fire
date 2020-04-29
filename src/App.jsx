@@ -1,12 +1,14 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux'
+
+import './App.css';
+
 import Homepage from './pages/homepage/homepage.component';
 import Header from './components/header/header.component';
 import ShopPage from './pages/shop/shop.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { Switch, Route } from 'react-router-dom';
 import { auth } from './firebase/firebase.utils';
-
-import './App.css';
+import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
 class App extends React.Component {
   constructor() {
@@ -32,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={ShopPage} />
@@ -43,4 +45,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(null, )(App);
