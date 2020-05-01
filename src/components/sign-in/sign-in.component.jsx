@@ -13,11 +13,11 @@ class SignIn extends React.Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
     };
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
 
     const { email, password } = this.state;
@@ -26,18 +26,18 @@ class SignIn extends React.Component {
       await auth.signInWithEmailAndPassword(email, password);
       this.setState({
         email: '',
-        password: ''
+        password: '',
       });
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { value, name } = e.target;
 
     this.setState({ [name]: value });
-  }
+  };
 
   render() {
     return (
@@ -64,7 +64,9 @@ class SignIn extends React.Component {
           />
           <div className='buttons'>
             <CustomButton type='submit'>Sign In</CustomButton>
-            <CustomButton isGoogleSignIn onClick={signInWithGoogle}>Sign in with Google</CustomButton>
+            <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
+              Sign in with Google
+            </CustomButton>
           </div>
         </form>
       </div>

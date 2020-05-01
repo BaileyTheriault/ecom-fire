@@ -9,13 +9,13 @@ import './sign-up.styles.scss';
 
 class SignUp extends React.Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       displayName: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
     };
   }
 
@@ -25,12 +25,15 @@ class SignUp extends React.Component {
     const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
-      alert('passwords don\'t match!')
+      alert("passwords don't match!");
       return;
     }
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password)
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
 
       await createUserProfileDocument(user, { displayName });
 
@@ -38,18 +41,18 @@ class SignUp extends React.Component {
         displayName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
       });
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   handleChange = e => {
     const { name, value } = e.target;
 
-    this.setState({[name]: value});
-  }
+    this.setState({ [name]: value });
+  };
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
@@ -59,7 +62,7 @@ class SignUp extends React.Component {
         <h2 className='title'>I do not have an account</h2>
         <span>Sign up with your email and password</span>
         <form className='sign-up-form' onSubmit={this.handleSubmit}>
-          <FormInput 
+          <FormInput
             type='text'
             name='displayName'
             value={displayName}
@@ -67,7 +70,7 @@ class SignUp extends React.Component {
             label='Display Name'
             required
           />
-          <FormInput 
+          <FormInput
             type='email'
             name='email'
             value={email}
@@ -75,7 +78,7 @@ class SignUp extends React.Component {
             label='Email'
             required
           />
-          <FormInput 
+          <FormInput
             type='password'
             name='password'
             value={password}
@@ -83,7 +86,7 @@ class SignUp extends React.Component {
             label='Password'
             required
           />
-          <FormInput 
+          <FormInput
             type='password'
             name='confirmPassword'
             value={confirmPassword}
@@ -94,7 +97,7 @@ class SignUp extends React.Component {
           <CustomButton type='submit'>SIGN UP</CustomButton>
         </form>
       </div>
-    )
+    );
   }
 }
 
