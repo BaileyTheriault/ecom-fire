@@ -3,14 +3,14 @@
 # dependencies
 package-lock.json
 node_modules
-/.pnp
+.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage
 
 # production
-/build
+build
 
 # misc
 .env

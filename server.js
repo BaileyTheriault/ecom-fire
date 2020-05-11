@@ -15,7 +15,7 @@ app.use(bp.urlencoded({ extended: true }));
 
 app.use(cors());
 
-if (process.env.NODE_ENV === 'product') {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('*', (req, res) => {
