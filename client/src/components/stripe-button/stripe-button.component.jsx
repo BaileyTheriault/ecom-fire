@@ -6,8 +6,20 @@ const StripeCheckoutButton = ({ price }) => {
   const publishableKey = 'pk_test_hvtqfLmq3aBcUhaD5BHXXGSy00Ny0bQ12G';
 
   const onToken = token => {
-    console.log(token);
-    alert('Payment Successful');
+    fetch('http://localhost:5000/payment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token,
+        amount: priceForStripe,
+      }),
+    })
+      .then(res => {
+        alert('Payment successful');
+      })
+      .catch(err => alert('There was an issue with your payment.'));
   };
 
   return (
