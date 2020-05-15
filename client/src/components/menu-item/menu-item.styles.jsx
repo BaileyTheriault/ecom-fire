@@ -56,6 +56,10 @@ export const ContentContainer = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
+
+  @media screen and (max-width: 800px) {
+    max-width: 30vw;
+  }
 `;
 
 export const TitleContainer = styled.h1`
@@ -69,4 +73,5 @@ export const TitleContainer = styled.h1`
 export const StyledSpan = styled.span`
   font-weight: lighter;
   font-size: 16px;
+  text-align: center;
 `;
